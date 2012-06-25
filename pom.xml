@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<!-- This POM template from http://netsuke.wordpress.com/2010/06/24/launching-solr-from-maven-for-rapid-development/ -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>ca.mcgill.music.ddmal</groupId>
-	<artifactId>liber-search</artifactId>
+	<groupId>edu.haverford.duchemin</groupId>
+	<artifactId>duchemin-solr</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>MEI Liber search</name>
-	<url>http://ddmal.music.mcgill.ca</url>
+	<name>Solr Instance for the DuChemin site</name>
+	<url>http://duchemin.haverford.edu</url>
 
 	<dependencies>
 		<dependency>
@@ -19,12 +19,22 @@
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr</artifactId>
-			<version>3.4.0</version>
+			<version>3.6.0</version>
 			<type>war</type>
-		</dependency>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.solr</groupId>
+      <artifactId>solr-analysis-extras</artifactId>
+      <version>3.6.0</version> 
+    </dependency>
+    <dependency>
+      <groupId>org.apache.solr</groupId>
+      <artifactId>solr-velocity</artifactId>
+      <version>3.6.0</version>
+    </dependency>
 	</dependencies>
 	<build>
-		<finalName>liber-search</finalName>
+		<finalName>duchemin-solr</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>

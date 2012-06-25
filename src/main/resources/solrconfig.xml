@@ -16,7 +16,7 @@
  limitations under the License.
 -->
 
-<config name="drupal-3.0-beta16-solr3">
+<config name="drupal-3.0-rc2-solr3">
   <!-- Controls what version of Lucene various components of Solr
        adhere to.  Generally, you want to use the latest version to
        get all bug fixes and improvements. It is highly recommended
@@ -80,7 +80,7 @@
 
      Other implementations of MergePolicy must have a no-argument constructor
      -->
-    <mergePolicy>org.apache.lucene.index.LogByteSizeMergePolicy</mergePolicy>
+    <mergePolicy class="org.apache.lucene.index.LogByteSizeMergePolicy" />
 
     <!--
      Expert:
@@ -576,25 +576,6 @@
   </searchComponent>
 
   <queryConverter name="queryConverter" class="solr.SpellingQueryConverter"/>
-
-  <!-- a search component that enables you to configure the top results for
-       a given query regardless of the normal lucene scoring.-->
-  <searchComponent name="elevator" class="solr.QueryElevationComponent" >
-    <!-- pick a fieldType to analyze queries -->
-    <str name="queryFieldType">string</str>
-    <str name="config-file">elevate.xml</str>
-  </searchComponent>
-
-  <!-- a request handler utilizing the elevator component -->
-  <requestHandler name="/elevate" class="solr.SearchHandler" startup="lazy">
-    <lst name="defaults">
-      <str name="echoParams">explicit</str>
-    </lst>
-    <arr name="last-components">
-      <str>elevator</str>
-    </arr>
-  </requestHandler>
-
 
   <!-- Update request handler.
 
